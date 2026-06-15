@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+
 interface FolderIconProps {
   label: string;
-  icon: string;
+  icon: string | ReactNode;
   onOpen: () => void;
 }
 

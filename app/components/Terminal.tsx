@@ -157,7 +157,7 @@ export default function Terminal({ embedded = false }: { embedded?: boolean }) {
       { type: "text", text: "  ping <proyecto>     → Info + URL de un proyecto", color: "white" },
       { type: "text", text: "  git init            → Mi cuenta de GitHub", color: "white" },
       { type: "text", text: "  clear               → Limpiar terminal", color: "white" },
-      { type: "text", text: "  bot_javier          → Chatbot IA sobre mí  ✦", color: "cyan" },
+      
       { type: "blank" }
     );
   }

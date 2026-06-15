@@ -100,50 +100,37 @@ export const textos = {
     prompt: "visitor@javier.dev",
 
     about: [
-      "Hola, soy Javier Navas.",
-      "Ingeniero Informático apasionado por construir productos digitales con buen código y mejor diseño.",
-      "Me especializo en desarrollo Full Stack, con foco en el frontend y experiencia de usuario.",
-      "Siempre buscando nuevos retos que combinen tecnología y creatividad.",
-    ],
-
+    "Hola, soy Javier Navas.",
+    "Ingeniero Informático graduado por la Universidad Nebrija.",
+    "A lo largo de mi trayectoria he trabajado en proyectos relacionados con desarrollo de software, inteligencia artificial, automatización y análisis de datos.",
+    "He realizado prácticas profesionales en everis e Inetum, participando en distintos proyectos tecnológicos y de innovación.",
+    "Posteriormente he trabajado en NFQ, colaborando en el desarrollo de soluciones empresariales.",
+    "Actualmente continúo ampliando mis conocimientos y mi próximo objetivo es cursar un Máster en Ciberseguridad."
+    ]
+    ,
 
     // ── Proyectos ────────────────────────────────────────────────────────────
     proyectos: [
       {
         slug: "Arcadiax",
         name: "Arcadiax",
-        description: "ArcadiaX es un ecosistema tecnológico personal que integra sistemas distribuidos, inteligencia artificial y hardware conectado para crear una infraestructura doméstica unificada orientada al control, la automatización y la experiencia multimedia",
-        tech: ["React", "TypeScript", "Node.js"],
-        url: "https://proyecto1.com",
-      },
-      {
-        slug: "Automatizacion_Francia",
-        name: "Automatizacion Fichero Francia para NFQ",
-        description: "Desarrollo de un sistema para automatizar cálculos de NAV, control de FX y validaciones financieras mediante Excel + scripts de validación.",
-        tech: ["Python",  "PostgreSQL","Excel"],
-        url: "",
-      },
-       {
-        slug: "Pipeline_PositionHoldings",
-        name: "Pipeline PositionHoldings para NFQ",
-        description: "Diseño y optimización del proceso de migración, validación y carga de datos de posiciones financieras entre AWS y BigQuery, incluyendo checks automáticos e integridad de esquemas.",
-        tech: ["Python",  "PostgreSQL","BigQuery"],
+        description: "",
+        tech: [],
         url: "",
       },
       {
-        slug: "Incorporacion a NFQ - New Joiner",
-        name: "Optimus Price pra Inetum",
-        description: "Es un proyecto orientado a la optimización de precios mediante análisis y modelado de datos para mejorar la rentabilidad. Participé en el tratamiento, estructuración y explotación de datos para apoyar la toma de decisiones basada en análisis cuantitativo.",
-        tech: ["Python",  "SQL","PowerBi"],
+        slug: "Marketplace",
+        name: "MiMarketplace",
+        description: "",
+        tech: [],
         url: "",
       },
-       
     ],
 
     // ── Estudios ─────────────────────────────────────────────────────────────
     estudios: [
       {
-        slug: "grado-informatica",
+        slug: "Ingeniería",
         titulo: "Grado en Ingeniería Informática",
         centro: "En la universidad he adquirido una base sólida en arquitectura de computadores, sistemas operativos, redes y estructuras de datos, comprendiendo cómo funcionan los sistemas desde el hardware hasta el software. Además, he desarrollado capacidad para diseñar, implementar y analizar sistemas fiables y eficientes, aplicando principios de ingeniería en proyectos reales.",
         periodo: "2018 – 2026",
