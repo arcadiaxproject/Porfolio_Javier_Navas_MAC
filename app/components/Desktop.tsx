@@ -7,8 +7,8 @@ import Dock from "./Dock";
 import Terminal from "./Terminal";
 import PhotoGallery from "./PhotoGallery";
 import PhotoViewer from "./PhotoViewer";
-import Calendar from "./Calendar";
 import NebrijanGradoPage from "./NebrijanGradoPage";
+import FuturosObjetivosPage from "./FuturosObjetivosPage";
 import BlackboardDAMPage from "./BlackboardDAMPage";
 import EverisPage from "./EverisPage";
 import InetumPage from "./InetumPage";
@@ -16,11 +16,10 @@ import NfqPage from "./NfqPage";
 import ArcadiaxPage from "./ArcadiaxPage";
 import MiMarketplacePage from "./MiMarketplacePage";
 import { textos } from "../textos";
-import type { NfqEventRaw } from "../lib/mongodb.server";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type WinId = "terminal" | "proyectos" | "experiencia" | "estudios" | "fotos" | "calendario";
+type WinId = "terminal" | "proyectos" | "experiencia" | "estudios" | "fotos" | "futuros-obj";
 type OpenDocFn = (title: string, content: ReactNode, opts?: { width?: number; height?: number }) => void;
 
 interface WinState {
@@ -428,20 +427,20 @@ const INITIAL_WINDOWS: WinState[] = [
     height: 480,
   },
   {
-    id: "calendario",
-    title: "📅  Calendario",
+    id: "futuros-obj",
+    title: "🎯  Aportacion empresarial",
     isOpen: false,
     isMinimized: false,
     zIndex: 10,
-    defaultPosition: { x: 150, y: 45 },
-    width: 820,
-    height: 520,
+    defaultPosition: { x: 160, y: 50 },
+    width: 760,
+    height: 560,
   },
 ];
 
 // ─── Desktop ─────────────────────────────────────────────────────────────────
 
-export default function Desktop({ nfqEvents = [] }: { nfqEvents?: NfqEventRaw[] }) {
+export default function Desktop() {
   const [windows, setWindows]       = useState<WinState[]>(INITIAL_WINDOWS);
   const [dynWindows, setDynWindows] = useState<DynWin[]>([]);
   const topZRef = useRef(10);
@@ -510,26 +509,27 @@ export default function Desktop({ nfqEvents = [] }: { nfqEvents?: NfqEventRaw[] 
       case "experiencia": return <ExperienciaContent onOpenDoc={openDoc} />;
       case "estudios":    return <EstudiosContent onOpenDoc={openDoc} />;
       case "fotos":       return <PhotoGallery onOpenPhoto={(foto) => openDoc(foto, <PhotoViewer src={`/fotos/${foto}`} name={foto} />)} />;
-      case "calendario":  return <Calendar nfqEvents={nfqEvents} />;
+      case "futuros-obj": return <FuturosObjetivosPage />;
     }
   }
 
   // ── Folders + Dock ───────────────────────────────────────────────────────
 
   const folders: { id: string; label: string; icon: ReactNode; onOpen: () => void }[] = [
-    { id: "proyectos",   label: "Proyectos",   icon: PROYECTOS_FOLDER_ICON, onOpen: () => window.open("https://www.google.com", "_blank") },
-    { id: "experiencia", label: "Experiencia", icon: "💼",                  onOpen: () => openWindow("experiencia") },
-    { id: "estudios",    label: "Estudios",    icon: "🎓",                  onOpen: () => openWindow("estudios") },
-    { id: "fotos",       label: "Fotos",       icon: "📷",                  onOpen: () => openWindow("fotos") },
+    { id: "futuros-obj",     label: "Aportacion empresarial", icon: "🎯",             onOpen: () => openWindow("futuros-obj") },
+    { id: "proyectos",       label: "Proyectos",        icon: PROYECTOS_FOLDER_ICON, onOpen: () => window.open("https://misproyectos-six.vercel.app/arcadiax", "_blank") },
+    { id: "experiencia",     label: "Experiencia",      icon: "💼",                  onOpen: () => openWindow("experiencia") },
+    { id: "estudios",        label: "Estudios",         icon: "🎓",                  onOpen: () => openWindow("estudios") },
+    { id: "fotos",           label: "Fotos",            icon: "📷",                  onOpen: () => openWindow("fotos") },
   ];
 
   const dockItems = [
     { id: "terminal",    icon: "🖥️", label: "Terminal",    onClick: () => openWindow("terminal"),    isOpen: windows.find((w) => w.id === "terminal")?.isOpen },
-    { id: "proyectos",  icon: "📁",  label: "Proyectos",   onClick: () => window.open("https://www.google.com", "_blank"), isOpen: false },
+    { id: "proyectos",  icon: "📁",  label: "Proyectos",   onClick: () => window.open("https://misproyectos-six.vercel.app/arcadiax", "_blank"), isOpen: false },
     { id: "experiencia",icon: "💼",  label: "Experiencia", onClick: () => openWindow("experiencia"), isOpen: windows.find((w) => w.id === "experiencia")?.isOpen },
     { id: "estudios",   icon: "🎓",  label: "Estudios",    onClick: () => openWindow("estudios"),    isOpen: windows.find((w) => w.id === "estudios")?.isOpen },
     { id: "fotos",      icon: "📷",  label: "Fotos",       onClick: () => openWindow("fotos"),       isOpen: windows.find((w) => w.id === "fotos")?.isOpen },
-    { id: "calendario", icon: "📅",  label: "Calendario",  onClick: () => openWindow("calendario"),  isOpen: windows.find((w) => w.id === "calendario")?.isOpen },
+    { id: "futuros-obj",icon: "🎯",  label: "Aportacion empresarial", onClick: () => openWindow("futuros-obj"), isOpen: windows.find((w) => w.id === "futuros-obj")?.isOpen },
   ];
 
   return (
